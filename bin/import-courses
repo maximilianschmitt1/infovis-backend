@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+'use strict';
+
+const db = require('../db');
+const each = require('promise-each');
+const map = require('promise-map');
+const flatten = require('flatten');
+const concat = require('concat-stream');
+
+process.stdin.pipe(concat(function(faculties) {
+  Promise.resolve(JSON.parse(faculties))
+    .then(map(getCourses))
+    .then(flatten)
+    .then(each(insertCourse))
+    .then(closeConnection)
+    .catch(handleError);
+}));
+
+function closeConnection() {
+  db.destroy();
+}
+
+function insertCourse(course) {
+  return db
+    .insert({ id: course.id, faculty_id: course.faculty.id, name: course.name })
+    .into('courses')
+    .return();
+}
+
+function getCourses(faculty) {
+  return faculty.courses.map(function(course) {
+    course.faculty = faculty;
+    return course;
+  });
+}
+
+function handleError(err) {
+  console.log(err.stack);
+}

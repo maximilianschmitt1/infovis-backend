@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+./bin/reset-db
+cat data/faculties.json | ./bin/import-faculties
+cat data/faculties.json | ./bin/import-courses

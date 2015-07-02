@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+'use strict';
+
+const db = require('../db');
+
+pwhile(notRolledBack, rollback).then(migrate).then(closeConnection);
+
+function closeConnection() {
+  db.destroy();
+}
+
+function notRolledBack() {
+  return db.migrate.currentVersion()
+    .then(function(version) {
+      return version === 'none';
+    });
+}
+
+function rollback() {
+  return db.migrate.rollback();
+}
+
+function migrate() {
+  return db.migrate.latest();
+}
+
+function pwhile(condition, action) {
+  return condition().then(checkCondition);
+
+  function checkCondition(accept) {
+    if (accept) {
+      return true;
+    }
+
+    return action().then(condition).then(checkCondition);
+  }
+}

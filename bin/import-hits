@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+'use strict';
+
+const parseCsv = require('csv-parse');
+const through = require('through2');
+const moment = require('moment');
+const db = require('../db');
+const columns = ['id', 'time', 'anonymizedName', 'ip', 'courseId', 'context', 'contextId', 'action', 'url'];
+const csvParser = parseCsv({ delimiter: ';', columns: columns });
+
+process.stdin
+  .pipe(csvParser)
+  .pipe(importer())
+  .on('error', onError)
+  .on('finish', closeConnection);
+
+function importer() {
+  return through.obj(function(row, enc, cb) {
+    return db.insert({
+      id: row.id,
+      course_id: row.courseId,
+      time: moment.unix(row.time),
+      full_name: row.anonymizedName,
+      ip: row.ip,
+      context: row.context,
+      context_id: row.contextId,
+      action: row.action,
+      url: row.url
+    })
+    .into('hits')
+    .asCallback(cb);
+  });
+}
+
+function onError(err) {
+  console.error(err.stack);
+  closeConnection();
+}
+
+function closeConnection() {
+  console.log('Closing connection');
+  db.destroy();
+}

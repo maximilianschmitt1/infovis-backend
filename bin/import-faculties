@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+'use strict';
+
+const db = require('../db');
+const each = require('promise-each');
+const concat = require('concat-stream');
+
+process.stdin.pipe(concat(function(faculties) {
+  Promise.resolve(JSON.parse(faculties))
+    .then(each(insertFaculty))
+    .then(closeConnection)
+    .catch(handleError);
+}));
+
+function closeConnection() {
+  db.destroy();
+}
+
+function insertFaculty(faculty) {
+  return db.insert({ id: faculty.id, name: faculty.name }).into('faculties').return();
+}
+
+function handleError(err) {
+  console.log(err.stack);
+}
