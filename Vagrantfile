@@ -11,9 +11,9 @@ Vagrant.configure("2") do |config|
 
   # Use NFS for the shared folder
   config.vm.synced_folder ".", "/var/www/app",
-            id: "core",
-            :nfs => true,
-            :mount_options => ['nolock,vers=3,udp,noatime']
+    id: "core",
+    :nfs => true,
+    :mount_options => ['nolock,vers=3,udp,noatime']
 
   config.vm.provider :virtualbox do |vb|
     host = RbConfig::CONFIG['host_os']

@@ -1,0 +1,19 @@
+{
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true
+  },
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "rules": {
+    "no-unused-vars": [2, {"vars": "all", "args": "none"}],
+    "no-process-exit": 0,
+    "camelcase": [2, { "properties": "never" }],
+    "no-underscore-dangle": 0,
+    "no-use-before-define": 0,
+    "quotes": [1, "single"],
+    "no-shadow": 0
+  }
+}

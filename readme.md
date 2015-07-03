@@ -17,6 +17,15 @@ $ npm install
 $ knex migrate:latest
 ```
 
+## Start
+
+```
+$ vagrant up
+$ vagrant ssh
+$ cd /var/www/app
+$ node main
+```
+
 ## Seeding
 
 Do all of the following on the server, so make sure to `vagrant ssh` first.

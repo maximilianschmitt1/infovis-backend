@@ -14,7 +14,7 @@ sudo apt-get install -y nginx
 sudo service nginx start # start nginx
 update-rc.d nginx defaults # start nginx on boot
 sudo bash -c 'echo "upstream app {
-  server 127.0.0.1:8080;
+  server 127.0.0.1:3000;
 }
 
 server {

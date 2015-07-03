@@ -1,14 +1,8 @@
 'use strict';
 
 const knex = require('knex');
+const config = require('./config');
 
-const db = knex({
-  client: 'pg',
-  connection: {
-    user: 'root',
-    password: 'root',
-    database: 'root'
-  }
-});
+const db = knex(config.db);
 
 module.exports = db;
