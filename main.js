@@ -15,41 +15,41 @@ app.get('/', function(req, res, next) {
   }
 });
 
-app.get('/uniques/between/:t1/:t2', function(req, res, next) {
-  const minres = 'extract(year from "time"), extract(month from "time"), extract(day from "time")';
+app.get('/count/:what/between/:t1/:t2', function(req, res, next) {
   const resolutions = {
-    days: minres,
-    hours: `${minres}, extract(hour from "time")`,
-    minutes: `${minres}, extract(hour from "time"), extract(minute from "time")`
+    days: 'YYYY-MM-DD',
+    hours: 'YYYY-MM-DD HH',
+    minutes: 'YYYY-MM-DD HH:mm'
   };
-
+  const resolution = resolutions[req.query.resolution] || resolutions.days;
   const params = req.params;
-  const resolution = resolutions[req.query.resolution] || resolution.days;
+  const what = params.what;
 
-  db('hits')
-    .select(db.raw(`${resolution}, count(distinct "full_name")`))
+  db('counts')
+    .select('time', params.what)
     .where('time', '>=', params.t1).andWhere('time', '<', params.t2)
-    .groupByRaw(resolution)
-    .options({ rowMode: 'array' })
+    .orderBy('time')
+    .then(resolve)
     .then(respond)
     .catch(next);
+
+  function resolve(rows) {
+    const units = {};
+
+    rows.forEach(function(row) {
+      const unit = moment(row.time).format(resolution);
+      units[unit] = (units[unit] || 0) + row[what];
+    });
+
+    return Object.keys(units).map(function(unit) {
+      const row = { time: unit };
+      row[what] = units[unit];
+      return row;
+    });
+  }
 
   function respond(rows) {
     res.json(rows);
-  }
-});
-
-app.get('/hits/between/:t1/:t2', function(req, res, next) {
-  const params = req.params;
-  const t1 = moment(new Date(params.t1));
-  const t2 = moment(new Date(params.t2));
-
-  db('hits').count().whereBetween('time', [t1, t2])
-    .then(respond)
-    .catch(next);
-
-  function respond(rows) {
-    res.json(rows[0]);
   }
 });
 

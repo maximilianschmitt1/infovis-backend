@@ -21,7 +21,7 @@ function importer(what) {
       const time = row[0];
       const uniques = row[1];
 
-      upsert(time, { uniques: uniques }).asCallback(cb);
+      upsert(time, { uniques: uniques }, cb);
     });
   }
 
@@ -30,7 +30,7 @@ function importer(what) {
       const time = row[0];
       const hits = row[1];
 
-      upsert(time, { hits: hits }).asCallback(cb);
+      upsert(time, { hits: hits }, cb);
     });
   }
 
@@ -44,13 +44,13 @@ function importer(what) {
       const data = {};
       data[context + ':' + action] = count;
 
-      upsert(time, data).asCallback(cb);
+      upsert(time, data, cb);
     });
   }
 }
 
 function parse() {
-  return through(function(row, enc, cb) {
+  return through.obj(function(row, enc, cb) {
     try {
       row = JSON.parse(row.toString());
     } catch(err) {
@@ -67,16 +67,19 @@ function parse() {
 }
 
 function onError(err) {
+  console.error('Error:');
   console.error(err.stack || err);
   db.destroy();
   this.emit('end');
 }
 
-function upsert(time, data) {
+function upsert(time, data, cb) {
   time = moment(time, 'YYYY-MM-DD-HH-mm').format('YYYY-MM-DD HH:mm');
 
   return db('counts').select('time').where({ time: time })
-    .then(insertOrUpdate);
+    .then(insertOrUpdate)
+    .then(function() { cb(); })
+    .catch(cb);
 
   function insertOrUpdate(rows) {
     if (rows.length < 1) {

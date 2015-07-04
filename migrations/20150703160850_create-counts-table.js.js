@@ -4,8 +4,8 @@ const actionContextTypes = require('./action-context-types.json');
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('counts', function(table) {
     table.dateTime('time').unique().primary();
-    table.integer('uniques');
-    table.integer('hits');
+    table.integer('uniques').defaultTo(0);
+    table.integer('hits').defaultTo(0);
 
     actionContextTypes.forEach(function(row) {
       const context = row[0][0];
