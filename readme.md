@@ -2,8 +2,8 @@
 
 ## Dependencies
 
-* [Install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-* [Install Vagrant](https://www.vagrantup.com/)
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+* [Vagrant](https://www.vagrantup.com/)
 
 ## Setup
 

@@ -1,0 +1,92 @@
+#!/usr/bin/env node
+'use strict';
+
+const db = require('../db');
+const split = require('split');
+const assign = require('object.assign');
+const moment = require('moment');
+const through = require('through2');
+
+process.stdin
+  .pipe(split())
+  .pipe(parse())
+  .on('error', onError)
+  .pipe(importer(process.argv[2]))
+  .on('error', onError)
+  .on('finish', db.destroy.bind(db));
+
+function importer(what) {
+  if (what === 'uniques') {
+    return through.obj(function(row, enc, cb) {
+      const time = row[0];
+      const uniques = row[1];
+
+      upsert(time, { uniques: uniques }).asCallback(cb);
+    });
+  }
+
+  if (what === 'hits') {
+    return through.obj(function(row, enc, cb) {
+      const time = row[0];
+      const hits = row[1];
+
+      upsert(time, { hits: hits }).asCallback(cb);
+    });
+  }
+
+  if (what === 'actions') {
+    return through.obj(function(row, enc, cb) {
+      const time = row[0][0];
+      const context = row[0][1];
+      const action = row[0][2].replace(' ', '_');
+      const count = row[1];
+
+      const data = {};
+      data[context + ':' + action] = count;
+
+      upsert(time, data).asCallback(cb);
+    });
+  }
+}
+
+function parse() {
+  return through(function(row, enc, cb) {
+    try {
+      row = JSON.parse(row.toString());
+    } catch(err) {
+      return cb();
+    }
+
+    if (!row.length) {
+      return cb();
+    }
+
+    this.push(row);
+    cb();
+  });
+}
+
+function onError(err) {
+  console.error(err.stack || err);
+  db.destroy();
+  this.emit('end');
+}
+
+function upsert(time, data) {
+  time = moment(time, 'YYYY-MM-DD-HH-mm').format('YYYY-MM-DD HH:mm');
+
+  return db('counts').select('time').where({ time: time })
+    .then(insertOrUpdate);
+
+  function insertOrUpdate(rows) {
+    if (rows.length < 1) {
+      return db('counts').insert(assign({ time: time }, data));
+    }
+
+    if (rows.length > 1) {
+      throw new Error('Duplicate counts');
+    }
+
+    return db('counts').where({ time: time }).update(data);
+  }
+}

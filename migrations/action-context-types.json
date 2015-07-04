@@ -1,0 +1,485 @@
+[
+[["course","view"],1417221]
+,
+[["resource","view"],644713]
+,
+[["user","login"],358676]
+,
+[["role","unassign"],124674]
+,
+[["user","logout"],113870]
+,
+[["role","assign"],107458]
+,
+[["course","enrol"],93292]
+,
+[["folder","view"],73907]
+,
+[["quiz","continue attempt"],52764]
+,
+[["forum","view forum"],52149]
+,
+[["choicegroup","view"],51548]
+,
+[["login","error"],46553]
+,
+[["forum","view discussion"],46132]
+,
+[["course","update mod"],41726]
+,
+[["assign","view"],35116]
+,
+[["choice","view"],31787]
+,
+[["course","unenrol"],30138]
+,
+[["url","view"],30106]
+,
+[["user","view all"],24374]
+,
+[["data","view"],21989]
+,
+[["page","view"],19643]
+,
+[["quiz","view"],13458]
+,
+[["course","editsection"],13057]
+,
+[["course","add mod"],12769]
+,
+[["book","view chapter"],12720]
+,
+[["quiz","review"],12714]
+,
+[["user","delete"],12403]
+,
+[["course","view section"],11346]
+,
+[["user","view"],10654]
+,
+[["resource","add"],9030]
+,
+[["course","delete mod"],8594]
+,
+[["assign","view submit assignment form"],7697]
+,
+[["choice","choose"],7057]
+,
+[["glossary","view"],6951]
+,
+[["choicegroup","choose"],6130]
+,
+[["assign","view submission grading table"],6062]
+,
+[["assign","submit"],6031]
+,
+[["quiz","editquestions"],5597]
+,
+[["quiz","view summary"],5486]
+,
+[["mediathek","view"],4769]
+,
+[["quiz","attempt"],4210]
+,
+[["quiz","close attempt"],3955]
+,
+[["resource","update"],3904]
+,
+[["vhb","access"],3842]
+,
+[["course","recent"],3362]
+,
+[["user","update"],3349]
+,
+[["feedback","view"],3201]
+,
+[["assign","grade submission"],3038]
+,
+[["forum","add discussion"],2575]
+,
+[["book","view"],2508]
+,
+[["assign","view confirm submit assignment form"],2485]
+,
+[["wiki","view"],2471]
+,
+[["assign","view grading form"],2448]
+,
+[["user","add"],2411]
+,
+[["label","update"],2363]
+,
+[["assign","submit for grading"],2268]
+,
+[["course","update"],2144]
+,
+[["book","update chapter"],1857]
+,
+[["garbagecollector","setAuthNoLogin"],1285]
+,
+[["course","new"],1209]
+,
+[["choice","choose again"],1201]
+,
+[["lesson","view"],1189]
+,
+[["forum","delete discussion"],1168]
+,
+[["feedback","delete"],1057]
+,
+[["data","add"],1051]
+,
+[["folder","edit"],1047]
+,
+[["quiz","preview"],1020]
+,
+[["forum","add post"],977]
+,
+[["glossary","update entry"],872]
+,
+[["assign","submission statement accepted"],861]
+,
+[["mediaconnector","retrieve"],816]
+,
+[["page","update"],806]
+,
+[["quiz","delete attempt"],779]
+,
+[["feedback","submit"],694]
+,
+[["label","add"],684]
+,
+[["url","add"],683]
+,
+[["choicegroup","remove choice"],672]
+,
+[["quiz","manualgrade"],644]
+,
+[["assign","update"],641]
+,
+[["quiz","report"],637]
+,
+[["calendar","add"],634]
+,
+[["message","write"],610]
+,
+[["course","maxenrol"],599]
+,
+[["choice","report"],563]
+,
+[["hotpot","view"],546]
+,
+[["hotpot","attempt"],541]
+,
+[["label","view all"],536]
+,
+[["url","view all"],536]
+,
+[["lightboxgallery","view all"],536]
+,
+[["book","view all"],536]
+,
+[["folder","view all"],536]
+,
+[["page","view all"],536]
+,
+[["imscp","view all"],536]
+,
+[["resource","view all"],536]
+,
+[["quiz","update"],529]
+,
+[["lightboxgallery","view"],529]
+,
+[["grade","update"],529]
+,
+[["scorm","launch"],524]
+,
+[["hotpot","submit"],505]
+,
+[["forum","view forums"],486]
+,
+[["url","update"],467]
+,
+[["folder","add"],465]
+,
+[["etherpadlite","view"],463]
+,
+[["course","delete"],434]
+,
+[["forum","search"],429]
+,
+[["calendar","edit"],418]
+,
+[["glossary","view entry"],413]
+,
+[["data","view all"],402]
+,
+[["glossary","add entry"],394]
+,
+[["choice","update"],376]
+,
+[["forum","update post"],376]
+,
+[["choicegroup","report"],371]
+,
+[["choicegroup","update"],362]
+,
+[["chat","view"],348]
+,
+[["forum","update"],342]
+,
+[["wiki","edit"],338]
+,
+[["scorm","pre-view"],331]
+,
+[["data","record delete"],314]
+,
+[["folder","update"],296]
+,
+[["adobeconnect","view"],295]
+,
+[["lesson","start"],283]
+,
+[["message","add contact"],269]
+,
+[["data","update"],268]
+,
+[["forum","add"],258]
+,
+[["scorm","view"],251]
+,
+[["mindmap","view"],240]
+,
+[["course","move"],232]
+,
+[["chat","report"],231]
+,
+[["wiki","history"],209]
+,
+[["category","add"],208]
+,
+[["book","print"],199]
+,
+[["data","templates view"],193]
+,
+[["wiki","comments"],188]
+,
+[["page","add"],170]
+,
+[["adobeconnect","join meeting"],167]
+,
+[["book","add chapter"],134]
+,
+[["assign","add"],132]
+,
+[["quiz","view all"],125]
+,
+[["choicegroup","view all"],122]
+,
+[["quiz","add"],120]
+,
+[["book","update"],107]
+,
+[["assign","view all"],104]
+,
+[["category","update"],103]
+,
+[["feedback","update"],100]
+,
+[["wiki","map"],99]
+,
+[["course","report log"],80]
+,
+[["assign","download all submissions"],79]
+,
+[["category","hide"],76]
+,
+[["lightboxgallery","editimage"],75]
+,
+[["category","delete"],75]
+,
+[["scorm","update"],74]
+,
+[["hotpot","update"],73]
+,
+[["choicegroup","choose again"],73]
+,
+[["forum","view subscribers"],71]
+,
+[["data","templates saved"],68]
+,
+[["mediathek","add"],65]
+,
+[["choice","add"],60]
+,
+[["blog","view"],58]
+,
+[["forum","subscribe"],54]
+,
+[["wiki","add page"],53]
+,
+[["book","print chapter"],52]
+,
+[["choice","view all"],50]
+,
+[["lesson","end"],50]
+,
+[["choicegroup","add"],49]
+,
+[["data","fields add"],49]
+,
+[["category","show"],46]
+,
+[["forum","move discussion"],42]
+,
+[["message","remove contact"],39]
+,
+[["survey","view form"],38]
+,
+[["course","report outline"],36]
+,
+[["chat","talk"],35]
+,
+[["forum","unsubscribe"],34]
+,
+[["data","fields update"],33]
+,
+[["chat","view all"],33]
+,
+[["etherpadlite","add"],33]
+,
+[["assign","lock submission"],32]
+,
+[["hotpot","report"],32]
+,
+[["scorm","report"],30]
+,
+[["assign","revert submission to draft"],30]
+,
+[["wiki","update"],29]
+,
+[["imscp","view"],28]
+,
+[["assign","view submission"],25]
+,
+[["mediathek","update"],23]
+,
+[["glossary","add"],23]
+,
+[["lightboxgallery","update"],23]
+,
+[["course","completion updated"],23]
+,
+[["chat","add"],22]
+,
+[["feedback","add"],22]
+,
+[["wiki","comment"],22]
+,
+[["book","add"],22]
+,
+[["hotpot","add"],21]
+,
+[["adobeconnect","add"],21]
+,
+[["mindmap","update"],20]
+,
+[["forum","delete post"],19]
+,
+[["wiki","add"],18]
+,
+[["hotpot","view all"],17]
+,
+[["scorm","add"],16]
+,
+[["glossary","delete entry"],16]
+,
+[["survey","update"],16]
+,
+[["etherpadlite","update"],15]
+,
+[["wiki","admin"],14]
+,
+[["chat","update"],13]
+,
+[["lightboxgallery","add"],13]
+,
+[["message","block contact"],13]
+,
+[["adobeconnect","update"],12]
+,
+[["wiki","diff"],11]
+,
+[["message","view"],11]
+,
+[["mindmap","add"],10]
+,
+[["course","report stats"],10]
+,
+[["forum","mark read"],9]
+,
+[["survey","add"],9]
+,
+[["workshop","view"],9]
+,
+[["role","override"],8]
+,
+[["glossary","update"],8]
+,
+[["course","report live"],8]
+,
+[["discussion","mark read"],6]
+,
+[["data","fields delete"],5]
+,
+[["message","unblock contact"],5]
+,
+[["lesson","add"],5]
+,
+[["notes","view"],4]
+,
+[["forum","stop tracking"],4]
+,
+[["blog","add"],4]
+,
+[["workshop","add"],3]
+,
+[["workshop","update"],3]
+,
+[["survey","view graph"],3]
+,
+[["forum","unsubscribeall"],3]
+,
+[["assign","view feedback"],3]
+,
+[["survey","submit"],2]
+,
+[["feedback","view all"],2]
+,
+[["blog","update"],2]
+,
+[["forum","subscribeall"],2]
+,
+[["mindmap","view all"],2]
+,
+[["course","report participation"],2]
+,
+[["forum","start tracking"],2]
+,
+[["scorm","delete attempts"],1]
+,
+[["survey","view report"],1]
+,
+[["assign","unlock submission"],1]
+,
+[["calendar","edit all"],1]
+,
+[["glossary","view all"],1]
+,
+[["mediathek","view all"],1]
+,
+[["lesson","view all"],1]
+,
+[["course","user report"],1]
+]

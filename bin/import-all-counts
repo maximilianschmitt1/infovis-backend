@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cat data/actions-per-minute.json | ./bin/import-counts actions

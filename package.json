@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "JSONStream": "^1.0.4",
     "concat-stream": "^1.5.0",
     "csv-parse": "^0.1.3",
     "express": "^4.13.0",
@@ -7,10 +8,12 @@
     "knex": "^0.8.6",
     "kthulhu": "^0.1.2",
     "moment": "^2.10.3",
+    "object.assign": "^3.0.1",
     "pg": "^4.4.0",
     "promise-each": "^1.0.1",
     "promise-map": "^1.0.1",
     "promise-while": "^1.0.1",
+    "split": "^1.0.0",
     "through2": "^2.0.0",
     "uniq": "^1.0.1"
   }
