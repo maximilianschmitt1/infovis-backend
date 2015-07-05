@@ -2,8 +2,11 @@
 
 const express = require('express');
 const moment = require('moment');
+const cors = require('cors');
 const db = require('./db');
 const app = express();
+
+app.use(cors());
 
 app.get('/', function(req, res, next) {
   db('hits').count()
