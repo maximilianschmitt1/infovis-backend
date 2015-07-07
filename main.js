@@ -27,10 +27,11 @@ app.get('/count/:what/between/:t1/:t2', function(req, res, next) {
   const resolution = resolutions[req.query.resolution] || resolutions.days;
   const params = req.params;
   const what = params.what;
+  const t2 = moment(params.t2).add(1, 'days').format(resolutions.days);
 
   db('counts')
     .select('time', params.what)
-    .where('time', '>=', params.t1).andWhere('time', '<', params.t2)
+    .where('time', '>=', params.t1).andWhere('time', '<', t2)
     .orderBy('time')
     .then(resolve)
     .then(respond)
