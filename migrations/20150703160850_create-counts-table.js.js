@@ -1,4 +1,5 @@
 'use strict';
+
 const actionContextTypes = require('./action-context-types.json');
 
 exports.up = function(knex, Promise) {

@@ -6,6 +6,7 @@ const split = require('split');
 const assign = require('object.assign');
 const moment = require('moment');
 const through = require('through2');
+const table = process.argv[3] || 'counts';
 
 process.stdin
   .pipe(split())
@@ -76,20 +77,20 @@ function onError(err) {
 function upsert(time, data, cb) {
   time = moment(time, 'YYYY-MM-DD-HH-mm').format('YYYY-MM-DD HH:mm');
 
-  return db('counts').select('time').where({ time: time })
+  return db(table).select('time').where({ time: time })
     .then(insertOrUpdate)
     .then(function() { cb(); })
     .catch(cb);
 
   function insertOrUpdate(rows) {
     if (rows.length < 1) {
-      return db('counts').insert(assign({ time: time }, data));
+      return db(table).insert(assign({ time: time }, data));
     }
 
     if (rows.length > 1) {
       throw new Error('Duplicate counts');
     }
 
-    return db('counts').where({ time: time }).update(data);
+    return db(table).where({ time: time }).update(data);
   }
 }

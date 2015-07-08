@@ -18,19 +18,17 @@ app.get('/', function(req, res, next) {
   }
 });
 
-app.get('/count/:what/between/:t1/:t2', function(req, res, next) {
-  const resolutions = {
-    days: 'YYYY-MM-DD',
-    hours: 'YYYY-MM-DD HH',
-    minutes: 'YYYY-MM-DD HH:mm'
-  };
+app.get('/count/:dimension/between/:t1/:t2', function(req, res, next) {
+  const resolutions = { days: 'YYYY-MM-DD', hours: 'YYYY-MM-DD HH', minutes: 'YYYY-MM-DD HH:mm' };
   const resolution = resolutions[req.query.resolution] || resolutions.days;
+  const filter = req.query.filter;
+  const table = filter === 'students' ? 'student_counts' : filter === 'instructors' ? 'instructor_counts' : 'counts';
   const params = req.params;
-  const what = params.what;
+  const dimension = params.dimension;
   const t2 = moment(params.t2).add(1, 'days').format(resolutions.days);
 
-  db('counts')
-    .select('time', params.what)
+  db(table)
+    .select('time', params.dimension)
     .where('time', '>=', params.t1).andWhere('time', '<', t2)
     .orderBy('time')
     .then(resolve)
@@ -42,12 +40,12 @@ app.get('/count/:what/between/:t1/:t2', function(req, res, next) {
 
     rows.forEach(function(row) {
       const unit = moment(row.time).format(resolution);
-      units[unit] = (units[unit] || 0) + row[what];
+      units[unit] = (units[unit] || 0) + row[dimension];
     });
 
     return Object.keys(units).map(function(unit) {
       const row = { time: unit };
-      row[what] = units[unit];
+      row[dimension] = units[unit];
       return row;
     });
   }
