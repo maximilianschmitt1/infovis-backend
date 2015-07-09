@@ -39,7 +39,7 @@ function importer(what) {
     return through.obj(function(row, enc, cb) {
       const time = row[0][0];
       const context = row[0][1];
-      const action = row[0][2].replace(' ', '_');
+      const action = row[0][2].replace(/ /g, '_');
       const count = row[1];
 
       const data = {};

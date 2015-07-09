@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
 
     actionContextTypes.forEach(function(row) {
       const context = row[0][0];
-      const action = row[0][1].replace(' ', '_');
+      const action = row[0][1].replace(/ /g, '_');
       table.integer(context + ':' + action).defaultTo(0);
     });
   });
