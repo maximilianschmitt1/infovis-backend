@@ -28,6 +28,7 @@ sudo service nginx reload
 
 # install node.js
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.4/install.sh | bash
-source ~/.bashrc
+source $HOME/.nvm/nvm.sh
 nvm install iojs
+nvm alias default iojs
 npm i knex -g
